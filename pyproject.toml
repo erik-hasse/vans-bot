@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "vans-bot"
+version = "0.1.0"
+description = ""
+authors = ["Erik Hasse <erik.g.hasse@gmail.com>"]
+readme = "README.md"
+packages = [{include = "vans_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+slack-bolt = "^1.18.0"
+python-dotenv = "^1.0.0"
+beautifulsoup4 = "^4.12.2"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.3"
+pytest = "^7.4.0"
+mypy = "^1.4.1"
+types-requests = "^2.31.0.2"

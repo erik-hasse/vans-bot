@@ -4,9 +4,10 @@ import time
 from dotenv import load_dotenv
 from slack_sdk import WebClient
 
+from vans_bot.url_changed import URLChanged
 from vans_bot.vans_news import VansNewsMonitor
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 load_dotenv()
@@ -21,7 +22,13 @@ assert slack_token is not None
 
 def main():
     client = WebClient(token=slack_token)
-    monitors = [VansNewsMonitor()]
+    monitors = [
+        VansNewsMonitor(),
+        URLChanged(
+            url="https://www.vansaircraft.com/order-a-kit/kit-prices-and-lead-times/",
+            page_name="Kit Prices and Lead Times",
+        ),
+    ]
 
     while True:
         logger.info("Checking for messages")

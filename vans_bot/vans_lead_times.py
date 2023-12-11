@@ -2,7 +2,7 @@ import logging
 import typing as t
 from itertools import takewhile
 
-import bs4
+import bs4  # type: ignore[import]
 import requests
 
 from vans_bot.base import BaseChecker

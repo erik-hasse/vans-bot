@@ -57,8 +57,8 @@ class VansLeadTimeMonitor(BaseChecker):
             self.sections = sections
             return [
                 "Van's has updated the <https://www.vansaircraft.com/order-a-kit/"
-                "kit-prices-and-lead-times/|kit prices and lead times> page!"
+                "kit-prices-and-lead-times/|kit prices and lead times> page!\n\n"
                 "The following sections have changed:\n"
-                + "\n".join(f"* {name}" for name in changed_sections)
+                + "\n".join(f"- {name}" for name in changed_sections)
             ]
         return []

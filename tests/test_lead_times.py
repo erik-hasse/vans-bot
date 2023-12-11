@@ -44,9 +44,9 @@ def test_check_for_messages(
     assert lead_time_monitor.check_for_messages() == [
         (
             "Van's has updated the <https://www.vansaircraft.com/order-a-kit/"
-            "kit-prices-and-lead-times/|kit prices and lead times> page!"
+            "kit-prices-and-lead-times/|kit prices and lead times> page!\n\n"
             "The following sections have changed:\n"
-            "* RV Kit Prices"
+            "- RV Kit Prices"
         )
     ]
 

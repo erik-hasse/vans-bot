@@ -4,6 +4,7 @@ import time
 from dotenv import load_dotenv
 from slack_sdk import WebClient
 
+from vans_bot.vans_lcp_faq import VansLcpFaqMonitor
 from vans_bot.vans_lead_times import VansLeadTimeMonitor
 from vans_bot.vans_news import VansNewsMonitor
 
@@ -22,7 +23,7 @@ assert slack_token is not None
 
 def main():
     client = WebClient(token=slack_token)
-    monitors = [VansNewsMonitor(), VansLeadTimeMonitor()]
+    monitors = [VansNewsMonitor(), VansLeadTimeMonitor(), VansLcpFaqMonitor()]
 
     while True:
         logger.info("Checking for messages")

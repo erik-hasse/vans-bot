@@ -17,6 +17,7 @@ class VansLcpFaqMonitor(BaseChecker):
 
     def get_current_faq_page(self) -> bytes:
         resp = requests.get("https://www.vansaircraft.com/laser-cutting-customer-qa/")
+        resp.raise_for_status()
         return resp.content
 
     def parse_questions(self, page: bytes) -> dict[str, str]:

@@ -20,6 +20,7 @@ class VansLeadTimeMonitor(BaseChecker):
         resp = requests.get(
             "https://www.vansaircraft.com/order-a-kit/kit-prices-and-lead-times/"
         )
+        resp.raise_for_status()
         return resp.content
 
     def parse_sections(self, page: bytes) -> dict[str, t.Any]:

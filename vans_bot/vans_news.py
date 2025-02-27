@@ -39,6 +39,7 @@ class VansNewsMonitor(BaseChecker):
 
     def get_current_articles(self) -> dict[str, Article]:
         resp = requests.get("https://www.vansaircraft.com/news/")
+        resp.raise_for_status()
         return self.parse_news_page(resp.content)
 
     def find_new_articles(

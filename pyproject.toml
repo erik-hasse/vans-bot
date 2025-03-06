@@ -1,25 +1,31 @@
-[tool.poetry]
+[project]
 name = "vans-bot"
 version = "0.1.0"
-description = ""
-authors = ["Erik Hasse <erik.g.hasse@gmail.com>"]
+description = "Slack bot that post changes to the Van's Aircraft website"
 readme = "README.md"
-packages = [{include = "vans_bot"}]
+requires-python = ">=3.13"
+authors = [
+    { name = "Erik Hasse", email = "erik.g.hasse@gmail.com" }
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-slack-bolt = "^1.18.0"
-python-dotenv = "^1.0.0"
-beautifulsoup4 = "^4.12.2"
-requests = "^2.31.0"
+dependencies = [
+    "beautifulsoup4>=4.13.3",
+    "openai>=1.65.4",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+    "slack-bolt>=1.22.0",
+]
 
+[project.scripts]
+vans-bot = "vans_bot.__main__:main"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^3.3.3"
-pytest = "^7.4.0"
-mypy = "^1.4.1"
-types-requests = "^2.31.0.2"
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "pytest>=8.3.5",
+    "types-requests>=2.32.0.20250301",
+]

@@ -34,6 +34,7 @@ class VansLeadTimeMonitor(BaseChecker):
         page = self.get_current_lead_time_page()
         if page != self.page:
             change_summary = get_changes(self.page, page)
+            self.page = page
             return [
                 "Van's has updated the <https://www.vansaircraft.com/order-a-kit/"
                 "kit-prices-and-lead-times/|kit prices and lead times> page!\n\n"

@@ -4,10 +4,10 @@ Post news to the [Van's RV Slack group](https://join.slack.com/t/vansrv/shared_i
 
 ## Installation
 
-Install [poetry](https://python-poetry.org/docs/#installation) then run
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) then run
 ```shell
-poetry install --with dev
-pre-commit install
+uv sync
+uvx pre-commit install
 ```
 
 ## Usage
@@ -21,5 +21,17 @@ SLACK_CHANNEL_ID=
 
 Then run
 ```shell
-poetry run python -m vans_bot  # Add `&` to the end to run in the background
+uv run vans-bot  # Add `&` to the end to run in the background
 ```
+
+## Deploying
+
+```shell
+TAG=10
+docker build -t vans-bot:$TAG --platform linux/amd64 .
+docker save -o export.tar vans-bot:$TAG
+```
+
+In Portainer, import the image, then edit the deployment with the new tag.
+Be sure to uncheck "Always pull the image."
+Verify that the service started in the logs.

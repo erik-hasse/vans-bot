@@ -1,7 +1,6 @@
 import logging
 import os
 import time
-from dotenv import load_dotenv
 from slack_sdk import WebClient
 
 from vans_bot.vans_lcp_faq import VansLcpFaqMonitor
@@ -10,8 +9,6 @@ from vans_bot.vans_news import VansNewsMonitor
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-load_dotenv()
 
 channel_id = os.getenv("SLACK_CHANNEL_ID")
 slack_token = os.getenv("SLACK_BOT_TOKEN")

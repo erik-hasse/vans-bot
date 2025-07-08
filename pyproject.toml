@@ -10,6 +10,7 @@ authors = [
 
 dependencies = [
     "beautifulsoup4>=4.13.3",
+    "markdownify>=1.1.0",
     "openai>=1.65.4",
     "python-dotenv>=1.0.1",
     "requests>=2.32.3",

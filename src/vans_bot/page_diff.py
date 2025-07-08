@@ -1,5 +1,8 @@
 import logging
+
 from openai import OpenAI
+from markdownify import markdownify as md
+
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +22,15 @@ If there are no user-facing changes, then state that they are only technical cha
 def get_changes(old: str, new: str) -> str:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[dict(role="user", content=prompt.format(old=old, new=new))],
+        messages=[
+            dict(
+                role="user",
+                content=prompt.format(
+                    old=md(old, heading_style="ATX"),
+                    new=md(new, heading_style="ATX"),
+                ),
+            )
+        ],
     )
     logger.info(
         f"Used {response.usage.prompt_tokens} prompt and "
